@@ -12,6 +12,16 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
 - **URL**: https://www.boot.dev/lessons/ad175094-e40d-4d49-baf7-d364da42216c
 - **Description**: Implementation of the bubble sort algorithm with testing
 
+### CH4-L6: Merge Sort
+- **URL**: https://www.boot.dev/lessons/5066e081-58bf-4d24-a218-cd267f04948b
+- **Description**: Implementation of the merge sort algorithm - a divide and conquer sorting algorithm that's much faster than bubble sort, especially for large datasets (1000+ elements)
+- **Key Concepts**:
+  - Divide and conquer strategy
+  - Recursive sorting
+  - Merging sorted lists
+  - Time complexity: O(n log n) vs Bubble Sort's O(n²)
+- **Use Case**: Sorting LockedIn influencer followers by follower count efficiently
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
