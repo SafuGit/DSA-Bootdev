@@ -38,6 +38,22 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   4. Repeat for all elements
 - **Use Case**: Sorting influencer affiliate deals by revenue (small datasets of ~200 items where insertion sort is faster and uses less server memory)
 
+### CH4-L15: Quick Sort
+- **URL**: https://www.boot.dev/lessons/5f62f856-53bf-47aa-a5b0-ada9381e3e57
+- **Description**: Implementation of the quick sort algorithm - an efficient divide and conquer sorting algorithm widely used in production systems
+- **Key Concepts**:
+  - Divide and conquer strategy with pivot-based partitioning
+  - In-place sorting (better memory usage than merge sort)
+  - Time complexity: O(n log n) average case, O(n²) worst case
+  - Faster than merge sort in practice due to better cache locality
+  - Recursive partitioning around a pivot element
+- **Algorithm Steps**:
+  1. Choose a pivot element (typically the last element)
+  2. Partition: move elements smaller than pivot to the left, larger to the right
+  3. Recursively apply quick sort to left and right partitions
+  4. Base case: lists with 0 or 1 elements are already sorted
+- **Use Case**: Unified sorting solution for both follower counts and revenue - efficient on large datasets while using less memory than merge sort
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
