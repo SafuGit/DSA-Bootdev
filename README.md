@@ -109,6 +109,27 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
 - **Growth Rate**: Power set size = 2^n (n=1→2, n=2→4, n=3→8, n=4→16)
 - **Use Case**: LockedIn ad targeting segments - computing all possible combinations of influencers for audience targeting. Limited to small sets due to exponential growth making larger computations impossible.
 
+### CH5-L10: Exponential Growth Sequences
+- **URL**: https://www.boot.dev/lessons/25218dea-5472-4326-abeb-c653730716e8
+- **Description**: Simulating exponential growth of an influencer's followers over time with an adjustable growth factor - demonstrating how sequences grow multiplicatively
+- **Key Concepts**:
+  - Exponential growth: each value is previous value multiplied by growth factor
+  - Sequence generation: building a list of values over time
+  - Time complexity: O(n) where n is the number of days
+  - Space complexity: O(n) to store the sequence
+  - Real-world modeling: viral growth, compound interest, population growth
+- **Algorithm Steps**:
+  1. Initialize sequence with the starting follower count
+  2. For each day in the growth period:
+     - Multiply the current count by the growth factor
+     - Append the new count to the sequence
+  3. Return the complete sequence (length = days + 1)
+- **Growth Pattern**: 
+  - Factor of 2: 10 → 20 → 40 → 80 (doubling)
+  - Factor of 3: 30 → 90 → 270 → 810 (tripling)
+  - Factor of 10: 40 → 400 → 4000 → 40000 (10x growth)
+- **Use Case**: LockedIn influencer analytics - predicting follower growth for viral content campaigns, modeling best-case growth scenarios for marketing projections. Helps influencers visualize potential reach over time periods.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
