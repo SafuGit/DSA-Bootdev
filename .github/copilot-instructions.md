@@ -77,7 +77,15 @@ pytest --html=report.html --self-contained-html  # Generate HTML report
 ### Adding New Lessons
 When creating a new test-lesson `CH{X}-L{X}`:
 3. Write comprehensive test suite in `test_main_pytest.py` using the established class structure
-4. Copy `pytest.ini` from any existing lesson
+4. Copy this `pytest.ini`
+```
+[pytest]
+testpaths = .
+python_files = test_*.py
+python_classes = Test*
+python_functions = test_*
+addopts = -v --tb=short
+```
 5. Update `README.md` with lesson details including Boot.dev URL, description, key concepts, and use case
 6. Test locally before committing
 

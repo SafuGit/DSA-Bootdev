@@ -89,6 +89,26 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   4. Return `current` after loop completes
 - **Use Case**: LockedIn influencer analytics - calculating follower growth patterns that follow Fibonacci sequence (6 weeks = 8 followers, 7 weeks = 13 followers). The polynomial algorithm ensures analytics pages load instantly instead of timing out with exponential runtime.
 
+### CH5-L4: Power Set - O(2^n) Exponential Time
+- **URL**: https://www.boot.dev/lessons/54b128ea-626d-4cf7-be1d-b719d4a65787
+- **Description**: Computing all possible subsets (power set) of a given set - demonstrating true exponential O(2^n) time complexity
+- **Key Concepts**:
+  - Exponential time complexity: O(2^n)
+  - Power set: all possible combinations including empty set and original set
+  - Each new element doubles the power set size
+  - Combinatorial explosion: 25 items = ~9 hours, 40 items = 34+ years!
+  - Demonstrates why exponential algorithms are impractical for large inputs
+- **Algorithm Steps**:
+  1. If input is empty, return [[]] (power set of empty set)
+  2. Initialize `all_subsets` with an empty list [[]]
+  3. For each element in input:
+     - Create `new_subsets` list
+     - For each existing subset, add current element to create new subset
+     - Extend `all_subsets` with all `new_subsets`
+  4. Return `all_subsets`
+- **Growth Rate**: Power set size = 2^n (n=1→2, n=2→4, n=3→8, n=4→16)
+- **Use Case**: LockedIn ad targeting segments - computing all possible combinations of influencers for audience targeting. Limited to small sets due to exponential growth making larger computations impossible.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
