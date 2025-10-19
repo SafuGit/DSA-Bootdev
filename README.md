@@ -4,6 +4,8 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
 
 ## Lessons
 
+## CH-4 Sorting Algorithms
+
 ### CH4-L1: Introduction to Sorting
 - **URL**: https://www.boot.dev/lessons/d4b077d7-3d68-4cd6-8996-ff54bccf7585
 - **Description**: Introduction to sorting algorithms and their importance in computer science
@@ -68,6 +70,24 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   2. Swap the minimum element with the element at the current position
   3. Repeat until the entire list is sorted
 - **Use Case**: Sorting LockedIn influencer data when write operations are expensive and datasets are small (fewer swaps than bubble sort)
+
+## CH-5 Exponential Time
+
+### CH5-L3: Fibonacci - Reduction to Polynomial Time
+- **URL**: https://www.boot.dev/lessons/87a81b0e-e6e8-442e-b418-c077658c195a
+- **Description**: Optimizing the Fibonacci sequence calculation from exponential O(2^n) time to polynomial O(n) time using an iterative approach
+- **Key Concepts**:
+  - Time complexity optimization: O(2^n) → O(n)
+  - Iterative vs recursive algorithms
+  - Space complexity: O(1) constant space
+  - Dynamic programming fundamentals (avoiding redundant calculations)
+  - The Fibonacci sequence: each number is the sum of the two preceding ones
+- **Algorithm Steps**:
+  1. Initialize `grandparent = 0` and `parent = 1`
+  2. Loop `n - 1` times, calculating `current = parent + grandparent`
+  3. Update ancestor values: shift `parent` to `grandparent`, `current` to `parent`
+  4. Return `current` after loop completes
+- **Use Case**: LockedIn influencer analytics - calculating follower growth patterns that follow Fibonacci sequence (6 weeks = 8 followers, 7 weeks = 13 followers). The polynomial algorithm ensures analytics pages load instantly instead of timing out with exponential runtime.
 
 ## Running Tests
 
