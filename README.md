@@ -22,6 +22,22 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Time complexity: O(n log n) vs Bubble Sort's O(n²)
 - **Use Case**: Sorting LockedIn influencer followers by follower count efficiently
 
+### CH4-L10: Insertion Sort
+- **URL**: https://www.boot.dev/lessons/83e64b78-29cd-4b5d-8fec-6f910475d4e5
+- **Description**: Implementation of the insertion sort algorithm - builds a sorted list one item at a time by inserting each element into its proper position
+- **Key Concepts**:
+  - In-place sorting algorithm
+  - Time complexity: O(n²) - less efficient than merge sort on large lists
+  - Faster than merge sort on small lists (due to smaller constants)
+  - Better memory efficiency than merge sort
+  - Stable sort (maintains relative order of equal elements)
+- **Algorithm Steps**:
+  1. Start from the second element (index 1)
+  2. Compare with elements to its left
+  3. Swap with larger elements until finding correct position
+  4. Repeat for all elements
+- **Use Case**: Sorting influencer affiliate deals by revenue (small datasets of ~200 items where insertion sort is faster and uses less server memory)
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
