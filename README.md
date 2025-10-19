@@ -54,6 +54,21 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   4. Base case: lists with 0 or 1 elements are already sorted
 - **Use Case**: Unified sorting solution for both follower counts and revenue - efficient on large datasets while using less memory than merge sort
 
+### CH4-L22: Selection Sort
+- **URL**: https://www.boot.dev/lessons/e30cadd2-5610-4b47-bcf3-e54bb44d07a6
+- **Description**: Implementation of the selection sort algorithm - a simple comparison-based sorting algorithm that improves upon bubble sort by making only one swap per iteration
+- **Key Concepts**:
+  - In-place sorting algorithm
+  - Time complexity: O(n²) - similar to bubble sort but with fewer swaps
+  - Only one swap per iteration (vs multiple in bubble sort)
+  - Not adaptive (doesn't benefit from partially sorted data)
+  - Predictable performance (always O(n²) regardless of input)
+- **Algorithm Steps**:
+  1. For each position in the list, find the minimum element in the unsorted portion
+  2. Swap the minimum element with the element at the current position
+  3. Repeat until the entire list is sorted
+- **Use Case**: Sorting LockedIn influencer data when write operations are expensive and datasets are small (fewer swaps than bubble sort)
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
