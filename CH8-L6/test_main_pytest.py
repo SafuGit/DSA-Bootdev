@@ -1,5 +1,5 @@
 import pytest
-from queue import Queue
+from my_queue import Queue
 from main import matchmake
 
 
