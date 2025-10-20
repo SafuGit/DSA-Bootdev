@@ -237,6 +237,44 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Pop: removes item, stack size decreases, subsequent calls return different items
 - **Use Case**: LockedIn undo functionality with preview - peek shows what connection will be undone (preview), pop actually removes it (commit undo). Users can preview the undo action before confirming. After popping, the next most recent connection becomes accessible at the top of the stack.
 
+### CH7-L7: Stacks - Using a Stack (Balanced Parentheses)
+- **URL**: https://www.boot.dev/lessons/77eead15-82c9-4047-b303-f93c1ac6af2d
+- **Description**: Real-world application of stacks - validating balanced parentheses in LockedIn's scripting language. Demonstrates how LIFO structure naturally solves nested matching problems
+- **Key Concepts**:
+  - Balanced parentheses: each opening has matching closing, properly nested
+  - Stack-based validation algorithm
+  - Opening parenthesis `(` → push to stack
+  - Closing parenthesis `)` → pop from stack (match pair)
+  - Stack empty at end → balanced ✅
+  - Stack not empty at end → unbalanced ❌ (unclosed openings)
+  - Pop from empty stack → unbalanced ❌ (closing without opening)
+- **Algorithm Strategy**:
+  1. Create empty stack
+  2. Iterate through each character
+  3. If `(`: push to stack
+  4. If `)`: pop from stack (if empty, return False)
+  5. After loop: return True if stack empty, False otherwise
+- **Balanced Examples**:
+  - `()` - simple pair
+  - `()()` - sequential pairs
+  - `((()))` - nested pairs
+  - `(()(()))` - mixed nesting and sequential
+- **Unbalanced Examples**:
+  - `(` - missing closing
+  - `())` - extra closing
+  - `(()()` - missing closing
+  - `)(` - wrong order
+- **Performance**:
+  - Time complexity: O(n) where n is string length (iterate once)
+  - Space complexity: O(n) worst case (all opening parentheses)
+  - Each character processed exactly once
+- **Why Stacks Work**:
+  - LIFO matches nesting structure perfectly
+  - Most recent opening `(` pairs with next closing `)`
+  - Natural fit for nested/hierarchical validation
+  - Used in compilers, parsers, expression evaluators
+- **Use Case**: LockedIn HR automation script validator - checks parentheses balance in scripting language before execution. Scripts group operations with parentheses (e.g., `(filter(role))(map(salary))`). Invalid syntax causes runtime errors, so validation prevents script failures and saves HR managers debugging time.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
