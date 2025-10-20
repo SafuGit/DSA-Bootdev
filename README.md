@@ -275,6 +275,55 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Used in compilers, parsers, expression evaluators
 - **Use Case**: LockedIn HR automation script validator - checks parentheses balance in scripting language before execution. Scripts group operations with parentheses (e.g., `(filter(role))(map(salary))`). Invalid syntax causes runtime errors, so validation prevents script failures and saves HR managers debugging time.
 
+## CH-8 Queues
+
+### CH8-L2: Queue Class Implementation
+- **URL**: https://www.boot.dev/lessons/73289433-96a5-4468-a977-7bbe3e731767
+- **Description**: Complete implementation of Queue data structure - a FIFO (First In, First Out) collection using Python list. Implements all fundamental queue operations with proper error handling
+- **Key Concepts**:
+  - Queue: ordered collection with FIFO (First In, First Out) access
+  - Physical analogy: line at a store (first person in line is first served)
+  - Tail: where items are added (enqueue/push)
+  - Head: where items are removed (dequeue/pop)
+  - Built on top of Python list as underlying storage
+  - Operations: push, pop, peek, size
+- **Queue Operations**:
+  - `push(item)` / `enqueue`: Add item to tail of queue (index 0)
+  - `pop()` / `dequeue`: Remove and return item from head (last index)
+  - `peek()` / `front`: Return item from head without removing
+  - `size()` / `length`: Return number of items in queue
+- **Implementation Details**:
+  - Use Python list as underlying storage (`self.items = []`)
+  - Tail of queue = index 0 (use `.insert(0, item)` for push)
+  - Head of queue = last index (use `.pop()` for removal)
+  - Empty queue operations return None (no IndexError)
+  - Push: O(n) due to list shifting with `.insert(0, item)`
+  - Pop: O(1) removes from end of list
+  - Peek: O(1) access to last element
+  - Size: O(1) returns list length
+- **Performance**:
+  - Time complexity: push O(n)*, pop O(1), peek O(1), size O(1)
+  - Space complexity: O(n) where n is number of items
+  - *Note: More efficient implementations use collections.deque for O(1) push
+- **FIFO Principle Example**:
+  ```
+  Push "A"  →  Queue: [A]
+  Push "B"  →  Queue: [B, A]  (B at tail, A at head)
+  Push "C"  →  Queue: [C, B, A]
+  Pop()     →  Returns "A", Queue: [C, B]
+  Pop()     →  Returns "B", Queue: [C]
+  ```
+- **Error Handling**:
+  - `pop()` on empty queue returns None (not IndexError)
+  - `peek()` on empty queue returns None (not IndexError)
+  - `size()` always returns valid integer (0 for empty)
+- **Stack vs Queue Comparison**:
+  - Stack: LIFO (Last In, First Out) - like stack of plates
+  - Queue: FIFO (First In, First Out) - like waiting in line
+  - Stack: push/pop from same end (top)
+  - Queue: push at tail, pop from head (opposite ends)
+- **Use Case**: LockedIn recruiter outreach queue - tracks order recruiters should contact job seekers. When users register, they're added to queue (fairness via FIFO). First registrants contacted first, no one gets skipped. Queue length shows backlog. Peek shows next person to contact without removing them from queue. Essential for fair, ordered processing of user requests.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
