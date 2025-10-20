@@ -209,6 +209,34 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Space complexity: O(n) where n is number of items
 - **Use Case**: LockedIn undo/redo functionality - when users add connections to their network, the stack stores the history of additions. Users can undo the last connection added (LIFO). Stacks are ideal for implementing undo features because the most recent action is always at the top and easily accessible.
 
+### CH7-L4: Stacks - Pop and Peek
+- **URL**: https://www.boot.dev/lessons/d148cd17-4fb1-47f3-9501-0fd9f433f54d
+- **Description**: Implements stack retrieval operations - peek (view top without removal) and pop (remove and return top). Completes the basic stack interface for LIFO data access
+- **Key Concepts**:
+  - Peek: view top item without modifying stack
+  - Pop: remove and return top item from stack
+  - Both operations return None on empty stack
+  - Peek is non-destructive (read-only)
+  - Pop is destructive (removes item)
+  - LIFO retrieval: most recently pushed item is first retrieved
+  - Both operations are O(1) time complexity
+- **Stack Operations**:
+  - `peek()`: Return top item without removal (or None if empty)
+  - `pop()`: Remove and return top item (or None if empty)
+- **Implementation Details**:
+  - Peek: return `items[-1]` if list not empty, else None
+  - Pop: use `items.pop()` to remove and return last item
+  - Check for empty stack before accessing
+  - Top of stack = end of list (index -1)
+- **Performance**:
+  - Peek time complexity: O(1) - direct index access
+  - Pop time complexity: O(1) - remove from end of list
+  - Space complexity: O(1) - no additional storage needed
+- **Differences**:
+  - Peek: view only, stack unchanged, can call repeatedly with same result
+  - Pop: removes item, stack size decreases, subsequent calls return different items
+- **Use Case**: LockedIn undo functionality with preview - peek shows what connection will be undone (preview), pop actually removes it (commit undo). Users can preview the undo action before confirming. After popping, the next most recent connection becomes accessible at the top of the stack.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
