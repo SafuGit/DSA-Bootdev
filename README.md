@@ -158,6 +158,29 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   5. Return the final count
 - **Use Case**: LockedIn user analytics - counting users by job title to generate demographic reports. Handles inconsistent casing in user-entered job titles (e.g., "Marketer", "marketer", "MARKETER" all count as matches).
 
+### CH6-L4: Lists - Last Work Experience
+- **URL**: https://www.boot.dev/lessons/21630e80-ca7b-40d1-b552-926d84bd783b
+- **Description**: Deep dive into list data structure performance characteristics and time complexity of common operations. Implements retrieving the last element from a work history list
+- **Key Concepts**:
+  - List operation time complexities:
+    - Append: O(1) - add to end
+    - Index access: O(1) - direct access by position
+    - Delete from middle: O(n) - requires shifting elements
+    - Search: O(n) - must iterate through list
+  - Negative indexing in Python (`list[-1]` gets last element)
+  - Empty list handling (return None when no data)
+  - Lists struggle with: frequent middle deletions and full-list searches
+- **Algorithm Steps**:
+  1. Check if work history list is empty
+  2. If empty, return None
+  3. Otherwise, return the last element (most recent job)
+  4. Can use `list[-1]` for O(1) access to last element
+- **Performance Analysis**:
+  - Time complexity: O(1) - direct index access to last element
+  - Space complexity: O(1) - no additional storage needed
+  - Optimal solution: negative indexing avoids iteration
+- **Use Case**: LockedIn user profiles - displaying the most recent job title on a user's profile page. Work history is stored chronologically (oldest to newest), and the last position represents current/most recent employment. Fast O(1) lookup ensures profile pages load instantly.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
