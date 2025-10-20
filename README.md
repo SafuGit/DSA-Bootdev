@@ -130,6 +130,34 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Factor of 10: 40 → 400 → 4000 → 40000 (10x growth)
 - **Use Case**: LockedIn influencer analytics - predicting follower growth for viral content campaigns, modeling best-case growth scenarios for marketing projections. Helps influencers visualize potential reach over time periods.
 
+## CH-6 Data Structures Introduction
+
+### CH6-L1: Introduction to Data Structures - Count Marketers
+- **URL**: https://www.boot.dev/lessons/d2176e10-f96b-4f57-af5c-e03e5c46fc88
+- **Description**: Introduction to data structures and their role in building efficient algorithms. First lesson focuses on basic list iteration and counting with case-insensitive string matching
+- **Key Concepts**:
+  - Data structures as organizational tools for algorithms
+  - List iteration and element counting
+  - Case-insensitive string comparison
+  - Time complexity: O(n) where n is the number of job titles
+  - Space complexity: O(1) constant space (only storing count)
+- **Data Structures Overview**:
+  - Stacks: Last in, first out (LIFO)
+  - Queues: First in, first out (FIFO)
+  - Linked Lists: Chain of nodes, efficient inserts/deletes
+  - Binary Trees: Tree with up to two children per node
+  - Red Black Trees: Self-balancing binary tree
+  - Hashmaps: Key-value mapping structure
+  - Tries: Word storage and search optimization
+  - Graphs: Nodes connected by edges
+- **Algorithm Steps**:
+  1. Initialize a counter to 0
+  2. Iterate through each job title in the list
+  3. Compare each title to "marketer" (case-insensitive)
+  4. Increment counter when match is found
+  5. Return the final count
+- **Use Case**: LockedIn user analytics - counting users by job title to generate demographic reports. Handles inconsistent casing in user-entered job titles (e.g., "Marketer", "marketer", "MARKETER" all count as matches).
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
