@@ -324,6 +324,66 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Queue: push at tail, pop from head (opposite ends)
 - **Use Case**: LockedIn recruiter outreach queue - tracks order recruiters should contact job seekers. When users register, they're added to queue (fairness via FIFO). First registrants contacted first, no one gets skipped. Queue length shows backlog. Peek shows next person to contact without removing them from queue. Essential for fair, ordered processing of user requests.
 
+### CH8-L6: Matchmaking Queue
+- **URL**: https://www.boot.dev/lessons/cd2268ff-f75b-4e02-ae47-148818efced1
+- **Description**: Real-world matchmaking system using a queue with extended functionality. Demonstrates breaking academic constraints to solve practical problems - adds `search_and_remove()` to handle user departures from queue
+- **Key Concepts**:
+  - Pragmatic software engineering: violating pure data structure constraints when needed
+  - Queue with extended operations beyond traditional FIFO
+  - Threshold-based triggering: automatic actions when conditions met
+  - Batch processing: matching users in pairs from pools of 4+
+  - Trade-offs: functionality vs theoretical purity
+- **Matchmaking Algorithm**:
+  1. Process user action:
+     - If "leave" → `search_and_remove(name)` from queue
+     - If "join" → `push(name)` to queue tail
+  2. Check queue size:
+     - If `size >= 4`: pop first 2 users and match them
+     - Else: return "No match found"
+- **Extended Queue Operations**:
+  - `search_and_remove(item)`: Remove item from **anywhere** in queue (O(n))
+  - Breaks traditional queue constraint (removal only from head)
+  - Necessary for real-world "cancel request" functionality
+  - Users can leave queue anytime, not just when at head
+- **User Action Format**:
+  ```python
+  user = ('Bob', 'join')    # Bob joins the queue
+  user = ('Alice', 'leave') # Alice leaves the queue
+  ```
+- **Match Triggering**:
+  - When queue has 4+ users:
+    - Pop first user (longest waiting)
+    - Pop second user (second longest waiting)
+    - Return: `"{user1} matched {user2}!"`
+  - Otherwise: return `"No match found"`
+- **Performance**:
+  - Join: O(n) - uses `.insert(0, item)`
+  - Leave: O(n) - searches queue then removes
+  - Match check: O(1) - size check
+  - Pop for match: O(1) each - removes from end
+- **Academic vs Real-World Trade-offs**:
+  - ✅ **Gain**: Solves real user need (can leave queue anytime)
+  - ❌ **Loss**: Breaks pure FIFO abstraction (removal from middle)
+  - ⚖️ **Verdict**: Acceptable when requirements demand it
+- **Example Flow**:
+  ```
+  Queue starts empty
+  Ted joins     → Queue: [Ted]                  → "No match found"
+  Barney joins  → Queue: [Barney, Ted]          → "No match found"
+  Marshall joins→ Queue: [Marshall, Barney, Ted]→ "No match found"
+  Lily joins    → Queue: [Lily, Marshall]       → "Ted matched Barney!"
+  Robin joins   → Queue: [Robin, Lily, Marshall]→ "No match found"
+  Carl joins    → Queue: [Carl, Robin]          → "Marshall matched Lily!"
+  Carl leaves   → Queue: [Robin]                → "No match found"
+  Robin leaves  → Queue: []                     → "No match found"
+  ```
+- **Why Extended Queue Works**:
+  - FIFO ensures fairness (longest waiting matched first)
+  - Automatic matching improves efficiency (no manual pairing)
+  - Search & remove handles real-world cancellations
+  - Threshold logic prevents matching with insufficient users
+- **Use Case**: LockedIn co-founder matchmaking - founders seeking co-founders for startups join queue. When 4+ waiting, system automatically matches first 2 (ensuring fairest pairing of longest-waiting users). Users can leave anytime if they find match elsewhere or change mind. Queue length shows matching pool size. Threshold-based matching ensures both users get viable match candidates (not just 1-on-1 with no alternatives).
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
