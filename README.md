@@ -181,6 +181,34 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Optimal solution: negative indexing avoids iteration
 - **Use Case**: LockedIn user profiles - displaying the most recent job title on a user's profile page. Work history is stored chronologically (oldest to newest), and the last position represents current/most recent employment. Fast O(1) lookup ensures profile pages load instantly.
 
+## CH-7 Stacks
+
+### CH7-L1: Stacks - Introduction and Implementation
+- **URL**: https://www.boot.dev/lessons/4fb8c103-5bab-4e0a-a0df-e4a024ee20b9
+- **Description**: Introduction to stack data structure - a LIFO (Last In, First Out) collection with restricted access. Implements basic stack operations: push (add to top) and size (count items)
+- **Key Concepts**:
+  - Stack: ordered collection with top-only access
+  - LIFO (Last In, First Out) principle
+  - Physical analogy: stack of plates (can only access top item)
+  - Restrictive design: items only added/removed from top
+  - Built on top of Python list (uses list as underlying storage)
+  - Push operation: O(1) - append to end of list
+  - Size operation: O(1) - return list length
+- **Stack Operations**:
+  - `push(item)`: Add item to top of stack (end of list)
+  - `size()`: Return number of items in stack
+  - Future operations: pop, peek (covered in later lessons)
+- **Implementation Details**:
+  - Use Python list as underlying storage (`self.items = []`)
+  - Top of stack = end of list (index -1)
+  - Bottom of stack = start of list (index 0)
+  - Push adds to end: `items.append(item)`
+  - Size returns length: `len(items)`
+- **Performance**:
+  - Time complexity: O(1) for both push and size
+  - Space complexity: O(n) where n is number of items
+- **Use Case**: LockedIn undo/redo functionality - when users add connections to their network, the stack stores the history of additions. Users can undo the last connection added (LIFO). Stacks are ideal for implementing undo features because the most recent action is always at the top and easily accessible.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
