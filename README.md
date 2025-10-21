@@ -464,6 +464,8 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - ❌ More complex to implement than arrays
 - **Use Case**: LockedIn queue performance optimization - current array-based queue has O(n) push operation because inserting at index 0 shifts all elements. With 1,000+ recruiters joining the queue, this becomes slow. Linked list-based queue achieves O(1) push by simply updating head pointer. Scales efficiently to millions of users without performance degradation. Critical for real-time matchmaking and job seeker contact ordering.
 
+# I HAVE STOPPED UPDATING DOCS AFTER THIS POINT.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
