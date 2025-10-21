@@ -1,9 +1,10 @@
 class Node:
   def __init__(self, val):
-    pass
+    self.val = val
+    self.next = None
 
   def set_next(self, node):
-    pass
+    self.next = node
 
   # don't touch below this line
 
