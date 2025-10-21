@@ -384,6 +384,86 @@ This workspace contains lessons from Boot.dev's Data Structures and Algorithms c
   - Threshold logic prevents matching with insufficient users
 - **Use Case**: LockedIn co-founder matchmaking - founders seeking co-founders for startups join queue. When 4+ waiting, system automatically matches first 2 (ensuring fairest pairing of longest-waiting users). Users can leave anytime if they find match elsewhere or change mind. Queue length shows matching pool size. Threshold-based matching ensures both users get viable match candidates (not just 1-on-1 with no alternatives).
 
+## CH-9 Linked Lists
+
+### CH9-L1: Linked Lists - Node Implementation
+- **URL**: https://www.boot.dev/lessons/6d49ab0d-1c58-44ba-9a78-22f22178f1ba
+- **Description**: Introduction to linked lists by implementing the fundamental Node class. Solves the O(n) performance problem of array-based queue push operations by using pointer-based data structures
+- **Key Concepts**:
+  - Node structure: stores data (`val`) and reference to next node (`next`)
+  - Linked lists vs arrays: scattered vs contiguous memory
+  - Pointer-based linking: O(1) operations vs array shifting
+  - Chain traversal: following `next` references through the list
+  - Memory efficiency: dynamic sizing without pre-allocation
+- **The Performance Problem**:
+  - Array-based queue: `push()` uses `.insert(0, item)` → O(n) time
+  - Inserting at index 0 requires shifting all existing elements
+  - Linked list solution: just update pointers → O(1) time
+- **Node Structure**:
+  ```python
+  Node:
+    - val: The data stored (e.g., "Carla", "James")
+    - next: Reference to next node (or None if last)
+  ```
+- **Visual Representation**:
+  ```
+  Array (contiguous):
+  [Item1][Item2][Item3][Item4] ← All side-by-side in memory
+  
+  Linked List (scattered):
+  [Item1] → [Item2] → [Item3] → [Item4] → None
+  Each node has pointer to next
+  ```
+- **Node Operations**:
+  - `__init__(val)`: Create node with value, set next=None
+  - `set_next(node)`: Link current node to another node
+  - Traversal pattern: `while current: ... current = current.next`
+- **Implementation Details**:
+  - Constructor sets `self.val = val` and `self.next = None`
+  - `set_next()` assigns `self.next = node` (pointer update)
+  - `__repr__()` returns the node's value for easy printing
+  - Nodes are independent objects connected by references
+- **Performance Comparison**:
+  | Operation | Array Queue | Linked List |
+  |-----------|-------------|-------------|
+  | push(item) | O(n) - shift all | O(1) - update pointer |
+  | pop() | O(1) - remove end | O(1) - update pointer |
+  | peek() | O(1) - access end | O(1) - access head/tail |
+  | Random access | O(1) - `list[i]` | O(n) - must traverse |
+- **Building a Linked List**:
+  ```python
+  # Create nodes
+  node1 = Node("Alice")
+  node2 = Node("Bob")
+  node3 = Node("Carol")
+  
+  # Link them
+  node1.set_next(node2)  # Alice → Bob
+  node2.set_next(node3)  # Bob → Carol
+  
+  # Traverse
+  current = node1
+  while current:
+      print(current.val)
+      current = current.next
+  # Output: Alice, Bob, Carol
+  ```
+- **Memory Model**:
+  - Arrays: Elements stored contiguously (predictable memory layout)
+  - Linked Lists: Nodes scattered in memory (connected by pointers)
+  - Trade-off: Arrays have cache locality, linked lists have flexible insertion
+- **Advantages of Linked Lists**:
+  - ✅ O(1) insertion/deletion at known positions
+  - ✅ Dynamic size (no reallocation needed)
+  - ✅ Efficient memory use (no wasted pre-allocated space)
+  - ✅ Easy to insert/delete in middle (just update pointers)
+- **Disadvantages of Linked Lists**:
+  - ❌ No random access (must traverse from head)
+  - ❌ Extra memory for pointers (each node stores reference)
+  - ❌ Poor cache performance (nodes not contiguous)
+  - ❌ More complex to implement than arrays
+- **Use Case**: LockedIn queue performance optimization - current array-based queue has O(n) push operation because inserting at index 0 shifts all elements. With 1,000+ recruiters joining the queue, this becomes slow. Linked list-based queue achieves O(1) push by simply updating head pointer. Scales efficiently to millions of users without performance degradation. Critical for real-time matchmaking and job seeker contact ordering.
+
 ## Running Tests
 
 Each lesson includes pytest tests. To run tests for a specific lesson:
